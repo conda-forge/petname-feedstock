@@ -16,11 +16,10 @@ build:
     - petname=petname.__main__:main
 
 requirements:
-  build:
-    - setuptools
   host:
     - python {{ python_min }}
     - pip
+    - setuptools
   run:
     - python >={{ python_min }}
 test:
