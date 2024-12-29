@@ -9,21 +9,22 @@ source:
   sha256: a25adba1f2572591fa58f34d246f141b9beb747732d3660e669408ea4d361828
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: "{{ PYTHON }} -m pip install . -vv"
   entry_points:
     - petname=petname.__main__:main
 
 requirements:
-  build:
-    - setuptools
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python >=3.6
+    - python >={{ python_min }}
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - petname
   commands:
